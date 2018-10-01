@@ -48,6 +48,7 @@
     "js-sha512": "^0.7.1",
     "rxjs": "5.5.2",
     "sw-toolbox": "3.6.0",
+    "woocommerce-api": "^1.4.2",
     "zone.js": "0.8.18"
   },
   "devDependencies": {
