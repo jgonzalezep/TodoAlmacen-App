@@ -17,8 +17,8 @@ export interface AppConfig {
 }
 
 export const BaseAppConfig: AppConfig = {
-	appName: "MOBIMALL",
-	apiBase: "https://todoalmacen.cl/wp-json/",
+	appName: "TODOALMACEN.CL",
+	apiBase: "http://todoalmacen.cl/wp-json/",
 	perPage: "5",
 	consumerKey: "ck_32fc047d4c021e74c4837256f495c537dfebd125",
 	consumerSecret: "cs_9ec141e33d6dd66fc6c8511c0928157524e8d3cc",
