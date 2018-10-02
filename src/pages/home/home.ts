@@ -51,7 +51,7 @@ export class HomePage {
 			}
 		}
 		let more = new Category();
-		more.name = 'More';
+		more.name = 'Mas';
 		more.id = '-1';
 		cats.push(more);
 		this.categoriesAll = cats;

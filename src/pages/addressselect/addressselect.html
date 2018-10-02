@@ -5,7 +5,7 @@
                 <img src="assets/imgs/ic_menu.png">
             </ion-icon>
         </button>
-        <ion-title>Add new address
+        <ion-title>Añadir nueva dirección
             <span float-right>
                 <ion-icon class="icon" (click)="searchPage()">
                     <img src="assets/imgs/ic_search.png" width="100%;">
@@ -21,14 +21,14 @@
 <ion-content padding class="bg-light">
     <div class="address-section">
         <p text-center padding-bottom margin-bottom>
-            Edit/Select address</p>
+            Editar/Seleccionar dirección</p>
         <ion-card>
             <ion-card-content *ngIf="!addresses || !addresses.length">
                 <div class="addres-detail">
                     <h3>
-                        <ion-icon name="ios-pin-outline" class="icon-position"></ion-icon>No address to show
+                        <ion-icon name="ios-pin-outline" class="icon-position"></ion-icon>No hay dirección para mostrar
                     </h3>
-                    <p>Add an address.</p>
+                    <p>Añadir una dirección.</p>
                 </div>
             </ion-card-content>
             <ion-card-content *ngIf="addresses && addresses.length">
@@ -48,7 +48,7 @@
         <ion-card-content>
             <div class="new-addres" (click)="addressNew()">
                 <h3>
-                    <ion-icon ios="ios-add-circle-outline" md="ios-add-circle-outline"></ion-icon>Add New Address
+                    <ion-icon ios="ios-add-circle-outline" md="ios-add-circle-outline"></ion-icon>Agregar nueva dirección
                 </h3>
             </div>
         </ion-card-content>

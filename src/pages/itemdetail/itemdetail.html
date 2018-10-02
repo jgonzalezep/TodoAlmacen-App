@@ -105,7 +105,7 @@
     <!-- Variations start -->
     <div *ngIf="productVariations && productVariations.length" class="your-items" padding-top>
         <ion-card-header>
-            <p>Product Variations</p>
+            <p>Variaciones de producto</p>
         </ion-card-header>
         <ion-card-content *ngFor="let item of productVariations">
             <ion-row>
@@ -127,11 +127,11 @@
                             </div>
                         </div>
                         <p text-right class="card-bottom">
-                            <button ion-button class="small button btn-round bg-green" text-right (click)="buyVariation(item)"> Buy now</button>
+                            <button ion-button class="small button btn-round bg-green" text-right (click)="buyVariation(item)">Compra ahora</button>
                         </p>
                     </div>
                     <p class="card-bottom">
-                        <button ion-button class="small button btn-round" text-right (click)="addVariation(item)"> Add to cart</button>
+                        <button ion-button class="small button btn-round" text-right (click)="addVariation(item)">Añadir al carro</button>
                     </p>
                 </ion-col>
             </ion-row>
@@ -171,13 +171,13 @@
     <!--    <Key features>-->
     <div style="height: 36px;"></div>
     <div *ngIf="product" class="features bg-white shadow-bottom" padding>
-        <h6 class="heading">Description</h6>
+        <h6 class="heading">Descripción</h6>
         <div *ngIf="!details" [innerHTML]="product.short_description"></div>
         <div *ngIf="details" [innerHTML]="product.description"></div>
-        <span *ngIf="!details" text-right class="text-sky" (click)="viewMore()">View more
+        <span *ngIf="!details" text-right class="text-sky" (click)="viewMore()">Ver más
             <ion-icon name="ios-arrow-forward-outline"></ion-icon>
         </span>
-        <span *ngIf="details" text-right class="text-sky" (click)="viewLess()">View less
+        <span *ngIf="details" text-right class="text-sky" (click)="viewLess()">Ver menos
             <ion-icon name="ios-arrow-forward-outline"></ion-icon>
         </span>
     </div>
@@ -300,8 +300,8 @@
 
     <!--    <similar Products>-->
     <div *ngIf="productsResponse && productsResponse.length" class="products" padding-top>
-        <h6 class="heading">Similar Products
-            <span text-right class="text-sky" (click)="viewMoreSimilar()">View more
+        <h6 class="heading">Productos similares
+            <span text-right class="text-sky" (click)="viewMoreSimilar()">Ver más
                 <ion-icon name="ios-arrow-forward-outline"></ion-icon>
             </span>
         </h6>
@@ -346,10 +346,10 @@
     <div *ngIf="product && product.type=='simple'" class="receipt btn-fisx-bottom">
         <ion-row>
             <ion-col>
-                <button ion-button full class="btn-round green-shadow btn-text" style="background: #fff;color: #4dd711;" (click)="addToCart()">ADD TO CART</button>
+                <button ion-button full class="btn-round green-shadow btn-text" style="background: #fff;color: #4dd711;" (click)="addToCart()">AÑADIR AL CARRO</button>
             </ion-col>
             <ion-col>
-                <button ion-button full class="bg-green btn-round green-shadow btn-text" (click)="buyNow()"> BUY NOW</button>
+                <button ion-button full class="bg-green btn-round green-shadow btn-text" (click)="buyNow()">COMPRAR AHORA</button>
             </ion-col>
         </ion-row>
     </div>

@@ -17,7 +17,7 @@
             </span>
         </ion-title>
     </ion-navbar>
-    <ion-searchbar (ionInput)="getItems($event)" placeholder="Search Brand or Product..." (click)="searchPage()"></ion-searchbar>
+    <ion-searchbar (ionInput)="getItems($event)" placeholder="Buscar productos..." (click)="searchPage()"></ion-searchbar>
     <ion-list>
         <ion-item *ngFor="let item of items">
         </ion-item>
@@ -50,7 +50,7 @@
         </ion-slide>
     </ion-slides>
 
-    <p>Latest Products
+    <p>Ultimas novedades
         <!-- 2<small class="bg-thime btn-round text-white" float-right>View all</small> -->
     </p>
     <ion-list>

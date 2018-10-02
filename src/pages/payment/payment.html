@@ -1,6 +1,6 @@
 <ion-header>
     <ion-navbar>
-        <ion-title>Pay now</ion-title>
+        <ion-title>Pague ahora</ion-title>
     </ion-navbar>
 </ion-header>
 
@@ -8,20 +8,20 @@
     <ion-row text-center class="status">
         <ion-col class="complate">
             <ion-icon name="ios-checkmark-circle"></ion-icon>
-            <span>Sign in</span>
+            <span>Registrarse</span>
         </ion-col>
         <ion-col class="processing">
             <ion-icon name="ios-checkmark-circle"></ion-icon>
-            <span>Shipping</span>
+            <span>Envío</span>
         </ion-col>
         <ion-col class="panding">
             <ion-icon name="md-radio-button-off"></ion-icon>
-            <span>Payment</span>
+            <span>Pago</span>
         </ion-col>
     </ion-row>
 
     <ion-card>
-        <p class="heading">PAYMENT METHOD</p>
+        <p class="heading">MÉTODO DE PAGO</p>
         <ion-card-content>
             <label ion-item *ngFor="let item of paymentGateways">
                 <ion-label>{{item.title}}</ion-label>
@@ -82,7 +82,7 @@
     </ion-card>
     <div class="spacebar"></div>
     <div class="btn-padding btn-fisx-bottom">
-        <button ion-button full class="bg-green btn-round green-shadow btn-text" (click)="placedPage()">Continue
+        <button ion-button full class="bg-green btn-round green-shadow btn-text" (click)="placedPage()">Continuar
         </button>
     </div>
 </ion-content>

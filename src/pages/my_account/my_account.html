@@ -24,7 +24,7 @@
     <ion-toolbar no-border-top class="tab-bar">
         <ion-segment [(ngModel)]="account">
             <ion-segment-button value="profile">
-                Profile
+                Pefil
             </ion-segment-button>
             <!--
             <ion-segment-button value="card">
@@ -32,7 +32,7 @@
             </ion-segment-button>
 			-->
             <ion-segment-button value="address">
-                My Address
+                Mi Dirección
             </ion-segment-button>
         </ion-segment>
     </ion-toolbar>
@@ -43,7 +43,7 @@
         <div *ngSwitchCase="'profile'" class="profile-section">
             <ion-list>
                 <ion-item>
-                    <ion-label floating>Username</ion-label>
+                    <ion-label floating>Usuario</ion-label>
                     <ion-input type="text" [readonly]="isReadonly()" [(ngModel)]="user.username"></ion-input>
                 </ion-item>
                 <ion-item>
@@ -51,12 +51,12 @@
                     <ion-input type="text" [readonly]="isReadonly()" [(ngModel)]="user.email"></ion-input>
                 </ion-item>
                 <ion-item *ngIf="selectedAddress">
-                    <ion-label floating>Phone Number</ion-label>
+                    <ion-label floating>Telefono</ion-label>
                     <ion-input type="text" [readonly]="isReadonly()" [(ngModel)]="selectedAddress.phone"></ion-input>
                 </ion-item>
             </ion-list>
             <div class="btn-fisx-bottom">
-                <button ion-button full class="bg-white btn-round text-sky btn-text">Update info</button>
+                <button ion-button full class="bg-white btn-round text-sky btn-text">Actualizar</button>
             </div>
         </div>
 
@@ -121,9 +121,9 @@
                 <ion-card-content *ngIf="!selectedAddress">
                     <div class="addres-detail">
                         <h3>
-                            <ion-icon name="ios-pin-outline" class="icon-position"></ion-icon>No address selected
+                            <ion-icon name="ios-pin-outline" class="icon-position"></ion-icon>No hay direccion seleccionada
                         </h3>
-                        <p>Add an address to continue.</p>
+                        <p>Añadir dirección para continuar.</p>
                     </div>
                 </ion-card-content>
                 <ion-card-content *ngIf="selectedAddress">
@@ -141,7 +141,7 @@
                 <ion-card-content>
                     <div class="new-addres" (click)="address()">
                         <h3>
-                            <ion-icon ios="ios-add-circle-outline" md="ios-add-circle-outline"></ion-icon>Add New Address
+                            <ion-icon ios="ios-add-circle-outline" md="ios-add-circle-outline"></ion-icon>Añadir nueva dirección
                         </h3>
                     </div>
                 </ion-card-content>

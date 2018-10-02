@@ -6,10 +6,10 @@
                     <ion-avatar item-start>
                         <img src="assets/imgs/icon.png">
                     </ion-avatar>
-                    <h2 *ngIf="user">Hey {{user.username}}
+                    <h2 *ngIf="user">Hola {{user.username}}
                         <ion-icon name="ios-arrow-forward"></ion-icon>
                     </h2>
-                    <h2 *ngIf="!user">Hey Guest
+                    <h2 *ngIf="!user">Hola Invitado
                         <ion-icon name="ios-arrow-forward"></ion-icon>
                     </h2>
                     <p *ngIf="user">{{user.email}}</p>
@@ -20,7 +20,7 @@
             <ion-row>
                 <ion-col menuClose (click)="myorder_1Page()">
                     <img src="assets/imgs/my_order.png">
-                    <p>My Order</p>
+                    <p>Mi orden</p>
                 </ion-col>
                 <!-- <ion-col col-4 menuClose (click)="my_accountPage()">
                     <img src="assets/imgs/my-card.png">
@@ -28,7 +28,7 @@
                 </ion-col> -->
                 <ion-col menuClose (click)="addressPage()">
                     <img src="assets/imgs/my_location.png">
-                    <p>My Addresses</p>
+                    <p>Mi Dirección</p>
                 </ion-col>
             </ion-row>
         </div>
@@ -39,11 +39,11 @@
             <ion-list>
                 <button ion-item menuClose (click)="homePage()">
                     <img src="assets/imgs/ic_home.png ">
-                        Home
+                        Inicio
                 </button>
                 <button ion-item menuClose (click)="categoriesPage()">
                     <img src="assets/imgs/ic_categories.png ">
-                        Categories
+                        Categorias
                 </button>
                 <!--
                 <button ion-item menuClose (click)="myorder_2Page()">
@@ -53,15 +53,15 @@
 -->
                 <button ion-item menuClose (click)="wishlistPage()">
                     <img src="assets/imgs/ic_my_wishlist.png ">
-                        My Wishlist
+                        Mis Favoritos
                 </button>
                 <button *ngIf="user" ion-item menuClose (click)="my_accountPage()">
                     <img src="assets/imgs/ic_my_account.png ">
-                        My Account
+                        Mi Cuenta
                 </button>
                 <button ion-item menuClose (click)="helpPage()">
                     <img src="assets/imgs/ic_help.png ">
-                        Help Center
+                        Centro de ayuda
                 </button>
                 <button *ngIf="user" ion-item menuClose (click)="phonenumberPage()">
                     <img src="assets/imgs/ic_logout.png ">
