@@ -61,11 +61,11 @@ export class ShippiningPage {
 
 	ionViewDidEnter() {
 		this.selectedAddress = JSON.parse(window.localStorage.getItem(Constants.SELECTED_ADDRESS));
-		this.addressChangeText = this.selectedAddress == null ? 'Add' : 'Change';
+		this.addressChangeText = this.selectedAddress == null ? 'Añadir' : 'Cambiar';
 	}
 
 	addressPage() {
-		this.navCtrl.push(AddressSelectPage, { action: 'choose' });
+		this.navCtrl.push(AddressSelectPage, { action: 'Escojer' });
 	}
 
 	removeItem(product) {
@@ -173,7 +173,7 @@ export class ShippiningPage {
 
 	paymentPage() {
 		if (this.selectedAddress == null) {
-			this.showToast('Please select an address.');
+			this.showToast('Por favor seleccione una dirección.');
 		} else {
 			if (!this.coupon) {
 				window.localStorage.removeItem(Constants.SELECTED_COUPON);

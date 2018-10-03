@@ -15,7 +15,7 @@ import { LoginPage } from '../login/login';
 export class CartPage {
 	private cartItems = new Array<CartItem>();
 	private total: number = 0;
-	private checkoutText = 'Proceed to checkout';
+	private checkoutText = 'Pasar por la caja';
 
 	constructor(private global: Global, public navCtrl: NavController, public viewCtrl: ViewController, private toastCtrl: ToastController) {
 		let cartItems: Array<CartItem> = global.getCartItems();
@@ -39,7 +39,7 @@ export class CartPage {
 		} else {
 			this.total = this.total - Number(product.sale_price);
 		}
-		this.showToast(decremented ? 'Item updated' : 'Item removed');
+		this.showToast(decremented ? 'Artículo actualizado' : 'Artículo eliminado');
 	}
 
 	incrementItem(product) {
@@ -47,7 +47,7 @@ export class CartPage {
 		if (incremented) {
 			this.total = this.total + Number(product.sale_price);
 		}
-		this.showToast(incremented ? 'Item updated' : 'Item max limit reached');
+		this.showToast(incremented ? 'Artículo actualizado' : 'Artículo límite máximo alcanzado');
 	}
 
 	calculateTotal() {
@@ -57,7 +57,7 @@ export class CartPage {
 		}
 		this.total = sum;
 		if (!this.cartItems || !this.cartItems.length) {
-			this.checkoutText = 'Cart is empty';
+			this.checkoutText = 'Carro vacio';
 		}
 	}
 
@@ -80,7 +80,7 @@ export class CartPage {
 				this.navCtrl.push(ShippiningPage);
 				this.dismiss();
 			} else {
-				this.showToast('Sign in to continue');
+				this.showToast('Inicia Sesión para continuar');
 				this.navCtrl.push(LoginPage);
 			}
 		}

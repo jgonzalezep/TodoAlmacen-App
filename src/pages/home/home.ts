@@ -58,7 +58,7 @@ export class HomePage {
 
 		this.loadBanners();
 		this.loadProducts();
-		this.presentLoading('loading products');
+		this.presentLoading('Cargando productos');
 	}
 
 	ionViewWillLeave() {

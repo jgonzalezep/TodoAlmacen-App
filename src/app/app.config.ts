@@ -25,7 +25,7 @@ export const BaseAppConfig: AppConfig = {
 	adminUsername: "admin",
 	adminPassword: "qwertyuiop",
 	paypalSandbox: "",
-	paypalProduction: "",
-	payuSalt: "",
-	payuKey: ""
+	paypalProduction: "https://www.flow.cl/api",
+	payuSalt: "5C486FFD-CBD9-4406-B99C-1L2D94617D82",
+	payuKey: "d9e1f4069d3d8a40fc92e03663848d3721893b35"
 };

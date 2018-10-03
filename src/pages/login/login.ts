@@ -43,7 +43,7 @@ export class LoginPage {
 		if (this.credentials.username.length == 0 || this.credentials.password.length == 0) {
 			this.showToast('Username or Password cannot be empty!');
 		} else {
-			this.presentLoading('Logging in');
+			this.presentLoading('Iniciando Sesión');
 			let subscription: Subscription = this.service.getAuthToken(this.credentials).subscribe(data => {
 				let authResponse: AuthResponse = data;
 				window.localStorage.setItem(Constants.USER_API_KEY, authResponse.token);
@@ -79,12 +79,12 @@ export class LoginPage {
 			this.events.publish('user:login');
 		}, err => {
 			this.dismissLoading();
-			this.presentErrorAlert("Unable to login with provided credentials");
+			this.presentErrorAlert("No se puede iniciar sesión con las credenciales proporcionadas");
 		});
 		this.subscriptions.push(subscription);
 	}
 
-	private getUserIdFromToken(token: string): string {
+	private getUserIdFromToken(token: string): string {	
 		let decodedString: string = window.atob(token.split(".")[1]);
 		return JSON.parse(decodedString).data.user.id;
 	}

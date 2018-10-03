@@ -69,7 +69,7 @@ export class PaymentPage {
 
 	placedPage() {
 		if (this.selectedPaymentGateway == null) {
-			this.showToast('Choose payment method.');
+			this.showToast('Elige el método de pagO.');
 		} else {
 			this.orderRequest = new OrderRequest();
 			this.orderRequest.payment_method = this.selectedPaymentGateway.id;
@@ -84,7 +84,7 @@ export class PaymentPage {
 				item.product = null;
 			}
 
-			this.presentLoading('Creating order');
+			this.presentLoading('Creando orden');
 			let subscription: Subscription = this.service.createOrder(window.localStorage.getItem(Constants.ADMIN_API_KEY), this.orderRequest).subscribe(data => {
 				this.orderResponse = data;
 				let coupon: Coupon = JSON.parse(window.localStorage.getItem(Constants.SELECTED_COUPON));
@@ -92,7 +92,7 @@ export class PaymentPage {
 					let couponSubs: Subscription = this.service.applyCouponCode(window.localStorage.getItem(Constants.ADMIN_API_KEY), String(this.orderResponse.id), coupon.code).subscribe(data => {
 						this.couponApplied = true;
 						window.localStorage.removeItem(Constants.SELECTED_COUPON);
-						this.showToast('Coupon applied.');
+						this.showToast('Cupón aplicado.');
 						this.orderPlaced();
 					}, err => {
 						console.log(err);

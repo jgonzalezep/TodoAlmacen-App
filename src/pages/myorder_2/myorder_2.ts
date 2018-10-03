@@ -34,7 +34,7 @@ export class Myorder_2Page {
 	constructor(public modalCtrl: ModalController, private toastCtrl: ToastController, public navCtrl: NavController, private service: WordpressClient, private loadingCtrl: LoadingController, private alertCtrl: AlertController) {
 		this.user = JSON.parse(window.localStorage.getItem(Constants.USER_KEY));
 		this.loadMyOrders();
-		this.presentLoading('loading orders');
+		this.presentLoading('Cargando compras');
 		let currency: Currency = JSON.parse(window.localStorage.getItem(Constants.CURRENCY));
 		if (currency) {
 			this.currencyText = currency.value;

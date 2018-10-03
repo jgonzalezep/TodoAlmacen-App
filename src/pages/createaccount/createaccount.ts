@@ -36,13 +36,13 @@ export class CreateaccountPage {
 		this.authError = "";
 		var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 		if (this.registerRequest.username.length < 4) {
-			this.showToast('Enter username atleast 4 char long');
+			this.showToast('Introduzca el nombre de usuario al menos 4 caracteres de largo');
 		} else if (this.registerRequest.email.length <= 5 || !reg.test(this.registerRequest.email)) {
-			this.showToast('Enter valid email address');
+			this.showToast('Introduce una dirección de correo electrónico válida');
 		} else if (this.registerRequest.password.length == 0 || !(this.registerRequest.password === this.registerRequestPasswordConfirm)) {
-			this.showToast('Enter valid passwords, twice.');
+			this.showToast('Introduce contraseñas válidas, dos veces.');
 		} else {
-			this.presentLoading('Registering user');
+			this.presentLoading('Registrando Usuario');
 			let subscription: Subscription = this.service.createUser(window.localStorage.getItem(Constants.ADMIN_API_KEY), this.registerRequest).subscribe(data => {
 				let registerResponse: RegisterResponse = data;
 				this.signIn(String(registerResponse.id), this.registerRequest.username, this.registerRequest.password);
@@ -68,7 +68,7 @@ export class CreateaccountPage {
 			this.getUser(userId);
 		}, err => {
 			this.dismissLoading();
-			this.presentErrorAlert("Unable to login with provided credentials");
+			this.presentErrorAlert("No se puede iniciar sesión con las credenciales proporcionadas");
 		});
 		this.subscriptions.push(subscription);
 	}
@@ -82,7 +82,7 @@ export class CreateaccountPage {
 			this.events.publish('user:login');
 		}, err => {
 			this.dismissLoading();
-			this.presentErrorAlert("Unable to login with provided credentials");
+			this.presentErrorAlert("No se puede iniciar sesión con las credenciales proporcionadas");
 		});
 		this.subscriptions.push(subscription);
 	}
