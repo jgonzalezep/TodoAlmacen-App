@@ -178,9 +178,16 @@ export class ShippiningPage {
 			if (!this.coupon) {
 				window.localStorage.removeItem(Constants.SELECTED_COUPON);
 			}
-			this.navCtrl.push(PaymentPage, { cart: this.cartItems, totalItems: this.total_items, total: this.total });
+			if(this.total > 12000){
+				this.navCtrl.push(PaymentPage, { cart: this.cartItems, totalItems: this.total_items, total: this.total });
+			}
+			else{
+				alert("Su pedido debe ser mayor a $ 12.000.");
+			}
+
 		}
 	}
+
 
 	codePage() {
 		let modal = this.modalCtrl.create(CodePage);

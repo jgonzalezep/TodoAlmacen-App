@@ -27,7 +27,7 @@
         <param name="android-package" onload="true" value="io.ionic.keyboard.IonicKeyboard" />
     </feature>
     <name>Mobimall</name>
-    <description>An awesome Ionic/Cordova app.</description>
+    <description>App oficial del sitio www.todoalmacen.cl.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
     <content src="index.html" />
     <access origin="*" />
@@ -37,6 +37,7 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <allow-navigation href="http://192.168.18.38:8100" />
     <allow-intent href="market:*" />
     <icon density="mdpi" src="resources/android/icon/mipmap-mdpi/ic_launcher.png" />
     <icon density="hdpi" src="resources/android/icon/mipmap-hdpi/ic_launcher.png" />

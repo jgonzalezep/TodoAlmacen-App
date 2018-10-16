@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Wed Oct 03 02:09:59 CLST 2018
+#Sun Oct 14 18:28:52 CLST 2018
 175.set=ASSET
 122.file=C\:\\Users\\Jonathan\\Desktop\\Repo\\TodoAlmacen-App\\platforms\\android\\app\\build\\intermediates\\assets\\debug\\www\\build\\vendor.js
 60.set=ASSET

@@ -115,13 +115,10 @@ export class PaymentPage {
 			this.initPayPal();
 		} else if (this.selectedPaymentGateway.id === "ppec_paypal") {
 			this.initPayPal();
-		} else if (this.selectedPaymentGateway.id === "pumcp" || this.selectedPaymentGateway.id === "payuindia") {
+		} else if (this.selectedPaymentGateway.id === "flow"  || this.selectedPaymentGateway.id === "payuindia") {
 			this.initPayUMoney();
 		} else if (this.selectedPaymentGateway.id === "cod") {
-			this.clearCart();
-			this.navCtrl.setRoot(PlacedPage);
-		} else {
-			this.showToast('Processed via Cash on delivery');
+			this.showToast('Procesado vía efectivo contra entrega');
 			this.clearCart();
 			this.navCtrl.setRoot(PlacedPage);
 		}
@@ -171,7 +168,6 @@ export class PaymentPage {
 
 	initPayUMoney() {
 		let name = this.user.username;
-		let mobile = '9873194659';
 		let email = this.user.email;
 		let bookingId = String(Math.floor(Math.random() * (99 - 10 + 1) + 10)) + String(this.orderResponse.id);
 		let productinfo = this.orderResponse.order_key;
@@ -181,26 +177,22 @@ export class PaymentPage {
 		let string = key + '|' + bookingId + '|' + amt + '|' + productinfo + '|' + name + '|' + email + '|||||||||||' + salt;
 		let encrypttext = sha512(string);
 
-		let url = "payumoney/payuBiz.html?amt=" + amt + "&name=" + name + "&mobileNo=" + mobile + "&email=" + email + "&bookingId=" + bookingId + "&productinfo=" + productinfo + "&hash=" + encrypttext + "&salt=" + salt + "&key=" + key;
+		let url = "https://www.todoalmacen.cl/flow/examples/payments/create.php?"+ "bokingid=" + bookingId +"&"+ "compra=" + productinfo +"&"+  "total=" + amt +"&"+ "correo=" + email;
 
 		let options: InAppBrowserOptions = {
-			location: 'yes',
+			location: 'no',
 			clearcache: 'yes',
-			zoom: 'yes',
+			zoom: 'no',
 			toolbar: 'no',
 			closebuttoncaption: 'back'
 		};
 		const browser: any = this.iab.create(url, '_blank', options);
-		browser.on('loadstop').subscribe(event => {
-			browser.executeScript({
-				file: "payumoney/payumoneyPaymentGateway.js"
-			});
-
-			if (event.url == "http://localhost/success.php") {
+		browser.on('loadstart').subscribe(event => {
+			if (event.url == "https://webpay3gint.transbank.cl/webpayserver/voucher.cgi") {
 				this.paymentSuccess();
 				browser.close();
 			}
-			if (event.url == "http://localhost/failure.php") {
+			if (event.url == "https://www.todoalmacen.cl/flow/examples/payments/result.php") {
 				this.paymentFailure();
 				browser.close();
 			}
@@ -225,7 +217,7 @@ export class PaymentPage {
 
 		let alert = this.alertCtrl.create({
 			title: 'Payment failure',
-			message: 'Unfortunately payment has failed hence order has been cancelled. Item(s) still exists in your cart, you can retry later.',
+			message: 'Lamentablemente el pago ha fallado, por lo tanto, el pedido ha sido cancelado. El artículo (s) todavía existe en su carrito, puede volver a intentarlo más tarde.',
 			buttons: [{
 				text: 'Okay',
 				role: 'cancel',
@@ -241,7 +233,6 @@ export class PaymentPage {
 	paymentSuccess() {
 		this.paymentDone = true;
 		this.clearCart();
-		this.presentLoading('Just a moment');
 		let subscription: Subscription = this.service.updateOrder(window.localStorage.getItem(Constants.ADMIN_API_KEY), String(this.orderResponse.id), { set_paid: true }).subscribe(data => {
 			this.done();
 		}, err => {

@@ -22,4 +22,22 @@
     "cordova-plugin-ionic-webview": {
       "PACKAGE_NAME": "com.verbosetech.mobimall_ionic_demo"
     },
-    "cordova-plugin-splashscre
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.verbosetech.mobimall_ionic_demo"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.verbosetech.mobimall_ionic_demo"
+    },
+    "cordova-plugin-x-socialsharing": {
+      "PACKAGE_NAME": "com.verbosetech.mobimall_ionic_demo"
+    }
+  },
+  "dependent_plugins": {
+    "card.io.cordova.mobilesdk": {
+      "PACKAGE_NAME": "com.verbosetech.mobimall_ionic_demo"
+    },
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "com.verbosetech.mobimall_ionic_demo"
+    }
+  }
+}

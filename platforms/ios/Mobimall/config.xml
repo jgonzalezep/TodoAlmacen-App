@@ -47,7 +47,7 @@
         <param name="onload" value="true" />
     </feature>
     <name>Mobimall</name>
-    <description>An awesome Ionic/Cordova app.</description>
+    <description>App oficial del sitio www.todoalmacen.cl.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
     <content src="index.html" />
     <access origin="*" />
@@ -57,6 +57,7 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <allow-navigation href="http://192.168.18.38:8100" />
     <allow-intent href="itms:*" />
     <allow-intent href="itms-apps:*" />
     <icon height="57" src="resources/ios/icon/icon.png" width="57" />
@@ -104,4 +105,14 @@
     <preference name="PageLength" value="0" />
     <preference name="PaginationBreakingMode" value="page" />
     <preference name="PaginationMode" value="unpaginated" />
-    <preference name="CordovaWebViewEngine" value="CDVWKWebVi
+    <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
+    <preference name="ScrollEnabled" value="false" />
+    <preference name="android-minSdkVersion" value="16" />
+    <preference name="SplashMaintainAspectRatio" value="true" />
+    <preference name="FadeSplashScreenDuration" value="300" />
+    <preference name="SplashShowOnlyFirstTime" value="false" />
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreenDelay" value="2000" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
+    <preference name="orientation" value="portrait" />
+</widget>

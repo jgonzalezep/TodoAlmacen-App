@@ -214,7 +214,12 @@ var ShippiningPage = (function () {
             if (!this.coupon) {
                 window.localStorage.removeItem(__WEBPACK_IMPORTED_MODULE_6__models_constants_models__["a" /* Constants */].SELECTED_COUPON);
             }
-            this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__payment_payment__["a" /* PaymentPage */], { cart: this.cartItems, totalItems: this.total_items, total: this.total });
+            if (this.total > 12000) {
+                this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__payment_payment__["a" /* PaymentPage */], { cart: this.cartItems, totalItems: this.total_items, total: this.total });
+            }
+            else {
+                alert("Su pedido debe ser mayor a $ 12.000.");
+            }
         }
     };
     ShippiningPage.prototype.codePage = function () {
@@ -1552,15 +1557,11 @@ var PaymentPage = (function () {
         else if (this.selectedPaymentGateway.id === "ppec_paypal") {
             this.initPayPal();
         }
-        else if (this.selectedPaymentGateway.id === "pumcp" || this.selectedPaymentGateway.id === "payuindia") {
+        else if (this.selectedPaymentGateway.id === "flow" || this.selectedPaymentGateway.id === "payuindia") {
             this.initPayUMoney();
         }
         else if (this.selectedPaymentGateway.id === "cod") {
-            this.clearCart();
-            this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_2__placed_placed__["a" /* PlacedPage */]);
-        }
-        else {
-            this.showToast('Processed via Cash on delivery');
+            this.showToast('Procesado vía efectivo contra entrega');
             this.clearCart();
             this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_2__placed_placed__["a" /* PlacedPage */]);
         }
@@ -1606,7 +1607,6 @@ var PaymentPage = (function () {
     PaymentPage.prototype.initPayUMoney = function () {
         var _this = this;
         var name = this.user.username;
-        var mobile = '9873194659';
         var email = this.user.email;
         var bookingId = String(Math.floor(Math.random() * (99 - 10 + 1) + 10)) + String(this.orderResponse.id);
         var productinfo = this.orderResponse.order_key;
@@ -1615,24 +1615,21 @@ var PaymentPage = (function () {
         var amt = this.couponApplied ? this.total : this.totalItems;
         var string = key + '|' + bookingId + '|' + amt + '|' + productinfo + '|' + name + '|' + email + '|||||||||||' + salt;
         var encrypttext = __WEBPACK_IMPORTED_MODULE_9_js_sha512__(string);
-        var url = "payumoney/payuBiz.html?amt=" + amt + "&name=" + name + "&mobileNo=" + mobile + "&email=" + email + "&bookingId=" + bookingId + "&productinfo=" + productinfo + "&hash=" + encrypttext + "&salt=" + salt + "&key=" + key;
+        var url = "https://www.todoalmacen.cl/flow/examples/payments/create.php?" + "bokingid=" + bookingId + "&" + "compra=" + productinfo + "&" + "total=" + amt + "&" + "correo=" + email;
         var options = {
-            location: 'yes',
+            location: 'no',
             clearcache: 'yes',
-            zoom: 'yes',
+            zoom: 'no',
             toolbar: 'no',
             closebuttoncaption: 'back'
         };
         var browser = this.iab.create(url, '_blank', options);
-        browser.on('loadstop').subscribe(function (event) {
-            browser.executeScript({
-                file: "payumoney/payumoneyPaymentGateway.js"
-            });
-            if (event.url == "http://localhost/success.php") {
+        browser.on('loadstart').subscribe(function (event) {
+            if (event.url == "https://webpay3gint.transbank.cl/webpayserver/voucher.cgi") {
                 _this.paymentSuccess();
                 browser.close();
             }
-            if (event.url == "http://localhost/failure.php") {
+            if (event.url == "https://www.todoalmacen.cl/flow/examples/payments/result.php") {
                 _this.paymentFailure();
                 browser.close();
             }
@@ -1656,7 +1653,7 @@ var PaymentPage = (function () {
         this.subscriptions.push(subscription);
         var alert = this.alertCtrl.create({
             title: 'Payment failure',
-            message: 'Unfortunately payment has failed hence order has been cancelled. Item(s) still exists in your cart, you can retry later.',
+            message: 'Lamentablemente el pago ha fallado, por lo tanto, el pedido ha sido cancelado. El artículo (s) todavía existe en su carrito, puede volver a intentarlo más tarde.',
             buttons: [{
                     text: 'Okay',
                     role: 'cancel',
@@ -1672,7 +1669,6 @@ var PaymentPage = (function () {
         var _this = this;
         this.paymentDone = true;
         this.clearCart();
-        this.presentLoading('Just a moment');
         var subscription = this.service.updateOrder(window.localStorage.getItem(__WEBPACK_IMPORTED_MODULE_3__models_constants_models__["a" /* Constants */].ADMIN_API_KEY), String(this.orderResponse.id), { set_paid: true }).subscribe(function (data) {
             _this.done();
         }, function (err) {
@@ -1776,7 +1772,7 @@ var PlacedPage = (function () {
     };
     PlacedPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-placed ',template:/*ion-inline-start:"C:\Users\Jonathan\Desktop\Repo\TodoAlmacen-App\src\pages\placed\placed.html"*/'<ion-header>\n\n    <ion-navbar>\n\n		<ion-title><p text-center style="width:100%">Orden colocada!</p></ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n    <div class="img-box">\n\n        <img src="assets/imgs/order-placed.jpg">\n\n    </div>\n\n    <h3 class="text-sky" text-center>Su pedido se ha realizado !!</h3>\n\n    <h4 class="" text-center>Su pedido se hizo con éxito.<br>porfavor visita <strong (click)="ordersPage()">My Order</strong> página para revisar<br>El progreso y más detalles.</h4>\n\n    <div class="btn-padding btn-fisx-bottom ">\n\n        <button ion-button full class="bg-green btn-round green-shadow btn-text" (click)="homePage()">SEGUIR COMPRANDO</button>\n\n    </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Jonathan\Desktop\Repo\TodoAlmacen-App\src\pages\placed\placed.html"*/
+            selector: 'page-placed ',template:/*ion-inline-start:"C:\Users\Jonathan\Desktop\Repo\TodoAlmacen-App\src\pages\placed\placed.html"*/'<ion-header>\n\n    <ion-navbar>\n\n		<ion-title><p text-center style="width:100%">Orden colocada!</p></ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n    <div class="img-box">\n\n        <img src="assets/imgs/order-placed.jpg">\n\n    </div>\n\n    <h3 class="text-sky" text-center>Su pedido se ha realizado !!</h3>\n\n    <h4 class="" text-center>Su pedido se hizo con éxito.<br>porfavor visita <strong (click)="ordersPage()">"Mi Orden"</strong> para revisar<br>El progreso y espere ser contactado por correo para más detalles.</h4>\n\n    <div class="btn-padding btn-fisx-bottom ">\n\n        <button ion-button full class="bg-green btn-round green-shadow btn-text" (click)="homePage()">SEGUIR COMPRANDO</button>\n\n    </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Jonathan\Desktop\Repo\TodoAlmacen-App\src\pages\placed\placed.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]])
     ], PlacedPage);
@@ -3667,6 +3663,9 @@ var BaseAppConfig = {
     adminUsername: "admin",
     adminPassword: "qwertyuiop",
     paypalSandbox: "",
+    APIURL: "https://flow.tuxpan.com/api",
+    APIKEY: "1F1B8561-E21E-4DC8-AB2B-23LE2FC1DF14",
+    SECRETKEY: "42b4e3846b0cf08c2e89406db3bfe72ad1e6787a",
     paypalProduction: "https://www.flow.cl/api",
     payuSalt: "5C486FFD-CBD9-4406-B99C-1L2D94617D82",
     payuKey: "d9e1f4069d3d8a40fc92e03663848d3721893b35"
