@@ -37,6 +37,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { MySplashPage } from '../pages/mysplash/mysplash';
+import { OneSignal } from '@ionic-native/onesignal';
+
 
 @NgModule({
   declarations: [
@@ -109,6 +111,7 @@ import { MySplashPage } from '../pages/mysplash/mysplash';
     PayPal,
     SocialSharing,
     InAppBrowser,
+    OneSignal,
     { provide: APP_CONFIG, useValue: BaseAppConfig },
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
