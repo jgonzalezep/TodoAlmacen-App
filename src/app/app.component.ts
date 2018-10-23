@@ -15,7 +15,6 @@ import { AddressSelectPage } from '../pages/addressselect/addressselect';
 import { HelpPage } from '../pages/help/help';
 import { CartPage } from '../pages/cart/cart';
 import { ReviewPage } from '../pages/review/review';
-
 import { WordpressClient } from '../providers/wordpress-client.service';
 import { Subscription } from "rxjs/Subscription";
 import { AuthResponse } from "../models/auth-response.models";
@@ -28,6 +27,8 @@ import { UserResponse } from "../models/user-response.models";
 import { Currency } from "../models/currency.models";
 import { APP_CONFIG, AppConfig } from "./app.config";
 import { MySplashPage } from '../pages/mysplash/mysplash';
+import { OneSignal } from '@ionic-native/onesignal';
+
 
 @Component({
 	templateUrl: 'app.html',
@@ -44,7 +45,7 @@ export class MyApp {
 	categoriesAll = new Array<Category>();
 	user: UserResponse;
 
-	constructor(@Inject(APP_CONFIG) private config: AppConfig, private events: Events, private alertCtrl: AlertController, private service: WordpressClient, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+	constructor(@Inject(APP_CONFIG) private config: AppConfig, private events: Events, private alertCtrl: AlertController, private service: WordpressClient, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private oneSignal: OneSignal	) {
 		let superAuth = "";
 		if (config.apiBase && config.apiBase.startsWith('https') && config.consumerKey && config.consumerKey.length && config.consumerSecret && config.consumerSecret.length) {
 			superAuth = ("Basic " + btoa(config.consumerKey + ":" + config.consumerSecret));
@@ -67,7 +68,9 @@ export class MyApp {
 		this.user = JSON.parse(window.localStorage.getItem(Constants.USER_KEY));
 
 		this.initializeApp();
+		this.handlerNotifications();
 		this.listenToLoginEvents();
+		
 	}
 
 	onSuperAuthSetup(superAuth) {
@@ -141,6 +144,22 @@ export class MyApp {
 			this.splashScreen.hide();
 		});
 	}
+
+	private handlerNotifications(){
+		this.oneSignal.startInit('105c6ed7-f553-4ee2-b3d2-7b2de2ac5022', '574100114164');
+		this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
+		this.oneSignal.handleNotificationOpened()
+		.subscribe(jsonData => {
+		  let alert = this.alertCtrl.create({
+			title: jsonData.notification.payload.title,
+			subTitle: jsonData.notification.payload.body,
+			buttons: ['OK']
+		  });
+		  alert.present();
+		  console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+		});
+		this.oneSignal.endInit();
+	  }
 
 	addressPage() {
 		this.nav.setRoot(AddressSelectPage);
