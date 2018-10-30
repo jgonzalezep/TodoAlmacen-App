@@ -30,6 +30,9 @@
     },
     "cordova-plugin-x-socialsharing": {
       "PACKAGE_NAME": "com.verbosetech.mobimall_ionic_demo"
+    },
+    "onesignal-cordova-plugin": {
+      "PACKAGE_NAME": "com.verbosetech.mobimall_ionic_demo"
     }
   },
   "dependent_plugins": {

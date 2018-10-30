@@ -65,6 +65,7 @@
 		1B6757ADC4094D41BF4EC4BF /* NSString+SSURLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = BF707C07FDBE4FACAB67E2AF /* NSString+SSURLEncoding.m */; };
 		B1A58321DAFD4D7B8164B875 /* SocialSharing.m in Sources */ = {isa = PBXBuildFile; fileRef = 23896741A06C4083B724355B /* SocialSharing.m */; };
 		DD5D47FC37A04CA792311D1C /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DE56A307BD443A1A5C01EC2 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		4A4AF0AA362D42619FD3B2AF /* OneSignalPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A4BCF1D58D49DBAD52AD1C /* OneSignalPush.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -196,6 +197,8 @@
 		01B2D504B0364E5986DF2D0C /* NSString+SSURLEncoding.h */ = {isa = PBXFileReference; name = "NSString+SSURLEncoding.h"; path = "cordova-plugin-x-socialsharing/NSString+SSURLEncoding.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		9A1FB82762914D55A30D415C /* SocialSharing.h */ = {isa = PBXFileReference; name = "SocialSharing.h"; path = "cordova-plugin-x-socialsharing/SocialSharing.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		7DE56A307BD443A1A5C01EC2 /* Social.framework */ = {isa = PBXFileReference; name = "Social.framework"; path = "System/Library/Frameworks/Social.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		83A4BCF1D58D49DBAD52AD1C /* OneSignalPush.m */ = {isa = PBXFileReference; name = "OneSignalPush.m"; path = "onesignal-cordova-plugin/OneSignalPush.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		9CF1940DEB1245B688CA97C2 /* OneSignalPush.h */ = {isa = PBXFileReference; name = "OneSignalPush.h"; path = "onesignal-cordova-plugin/OneSignalPush.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -414,6 +417,8 @@
 				23896741A06C4083B724355B /* SocialSharing.m */,
 				01B2D504B0364E5986DF2D0C /* NSString+SSURLEncoding.h */,
 				9A1FB82762914D55A30D415C /* SocialSharing.h */,
+				83A4BCF1D58D49DBAD52AD1C /* OneSignalPush.m */,
+				9CF1940DEB1245B688CA97C2 /* OneSignalPush.h */,
 			);
 			name = Plugins;
 			path = "Mobimall/Plugins";
@@ -551,6 +556,7 @@
 				DC9689E5AB474BD9A4A94280 /* CDVViewController+SplashScreen.m in Sources */,
 				1B6757ADC4094D41BF4EC4BF /* NSString+SSURLEncoding.m in Sources */,
 				B1A58321DAFD4D7B8164B875 /* SocialSharing.m in Sources */,
+				4A4AF0AA362D42619FD3B2AF /* OneSignalPush.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -22,14 +22,14 @@ apply plugin: 'com.android.application'
 buildscript {
     repositories {
         mavenCentral()
-        jcenter()
         maven {
             url "https://maven.google.com"
         }
+        jcenter()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.0'
+        classpath 'com.android.tools.build:gradle:3.0.1'
     }
 }
 
@@ -91,8 +91,9 @@ ext {
 }
 
 // PLUGIN GRADLE EXTENSIONS START
-apply from: "../card.io.cordova.mobilesdk/mobimall_ionic_demo-build.gradle"
-apply from: "../com.paypal.cordova.mobilesdk/mobimall_ionic_demo-build.gradle"
+apply from: "../card.io.cordova.mobilesdk/todoalmacen-build.gradle"
+apply from: "../com.paypal.cordova.mobilesdk/todoalmacen-build.gradle"
+apply from: "../onesignal-cordova-plugin/todoalmacen-build-extras-onesignal.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
 def hasBuildExtras = file('build-extras.gradle').exists()
@@ -262,6 +263,7 @@ dependencies {
     // SUB-PROJECT DEPENDENCIES START
     implementation(project(path: ":CordovaLib"))
     compile "com.android.support:support-v4:24.1.1+"
+    compile "com.onesignal:OneSignal:3.10.1"
     // SUB-PROJECT DEPENDENCIES END
 }
 

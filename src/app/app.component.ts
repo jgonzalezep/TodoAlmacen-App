@@ -45,7 +45,7 @@ export class MyApp {
 	categoriesAll = new Array<Category>();
 	user: UserResponse;
 
-	constructor(@Inject(APP_CONFIG) private config: AppConfig, private events: Events, private alertCtrl: AlertController, private service: WordpressClient, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private oneSignal: OneSignal	) {
+	constructor(@Inject(APP_CONFIG) private config: AppConfig, private events: Events, private alertCtrl: AlertController, private service: WordpressClient, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private oneSignal: OneSignal	) {	
 		let superAuth = "";
 		if (config.apiBase && config.apiBase.startsWith('https') && config.consumerKey && config.consumerKey.length && config.consumerSecret && config.consumerSecret.length) {
 			superAuth = ("Basic " + btoa(config.consumerKey + ":" + config.consumerSecret));

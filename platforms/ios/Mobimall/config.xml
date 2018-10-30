@@ -115,4 +115,7 @@
     <preference name="SplashScreenDelay" value="2000" />
     <preference name="ShowSplashScreenSpinner" value="false" />
     <preference name="orientation" value="portrait" />
+    <feature name="OneSignalPush">
+        <param name="ios-package" value="OneSignalPush" />
+    </feature>
 </widget>
